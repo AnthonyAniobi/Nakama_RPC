@@ -11,6 +11,19 @@ This is a script for generating Remote Procedure Calls in nakama.
 - Wallet
 - Health Check
 
+### How to use
+To use the RPC as it is (without any changes) follow the instructions below
+1. copy the `index.js` in the **build** folder
+2. paste the **index.js** file in the **module** folder in your nakama folder
+3. you can start the nakama server as usual 
+
+If you would like to make some changes to the RPC, read the instructions below and then run the command:
+```
+sudo docker-compose up
+```
+this generates the `build/index.js` file
+using this file repeat the instructions above
+
 
 ### Wallet RPC
 The source code for this function is found in `backend/walletupdate.ts`. Feel free to edit it as you wish. 
