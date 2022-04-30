@@ -3,7 +3,6 @@
         "backend/main.ts",
         "backend/healthcheck.ts",
         "backend/walletupdate.ts",
-        "backend/wallethistory.ts",
     ],
     "compilerOptions": {
         "target": "es5",
