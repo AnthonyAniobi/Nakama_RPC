@@ -1,28 +1,17 @@
-let rpcWalletUpdate = function (ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) {
+let rpcWalletHistory = function (ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string) {
 
-    logger.info('wallet rpc called');
+    logger.info('wallet history rpc called');
 
-    // const data = JSON.parse(payload);
-    const user_id: string = ctx.userId;
+    let userId = ctx.userId;
 
-    let changeset = {
-        token: data.token,
-    }
+    let data = JSON.parse(payload);
 
-    let metadata = {
-        user: data.name,
-        amount: data.token,
-    };
-
-    let data: nkruntime.WalletLedgerList;
-
-    let result: nkruntime.WalletUpdateResult;
+    const limit: number | undefined = data.limit;
 
     try {
-        result = nk.walletUpdate(user_id, changeset, metadata, true);
+        const results = nk.walletLedgerList(userId, limit);
+        return JSON.stringify({ title: 'successful', data: results });
     } catch (error) {
         return JSON.stringify({ title: 'failed', data: error });
     }
-
-    return JSON.stringify({ title: 'successful', data: changeset })
 }
